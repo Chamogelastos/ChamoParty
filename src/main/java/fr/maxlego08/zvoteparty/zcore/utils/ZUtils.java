@@ -3,7 +3,6 @@ package fr.maxlego08.zvoteparty.zcore.utils;
 import com.google.common.base.Strings;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
-import fr.maxlego08.menu.zcore.utils.nms.NmsVersion;
 import fr.maxlego08.zvoteparty.ZVotePartyPlugin;
 import fr.maxlego08.zvoteparty.api.enums.Permission;
 import fr.maxlego08.zvoteparty.zcore.enums.EnumInventory;
@@ -42,7 +41,6 @@ import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -61,32 +59,6 @@ import java.util.stream.Stream;
 @SuppressWarnings("deprecation")
 public abstract class ZUtils extends MessageUtils {
 
-    private static Material[] byId;
-
-    static {
-        if (NmsVersion.nmsVersion.getVersion() <= NmsVersion.V_1_12.getVersion()) {
-            byId = new Material[0];
-            for (Material material : Material.values()) {
-                if (byId.length <= material.getId()) {
-                    byId = Arrays.copyOfRange(byId, 0, material.getId() + 2);
-                }
-                byId[material.getId()] = material;
-            }
-        }
-    }
-
-    /**
-     * Create a progress bar
-     * https://www.spigotmc.org/threads/progress-bars-and-percentages.276020/
-     *
-     * @param l
-     * @param m
-     * @param totalBars
-     * @param symbol
-     * @param completedColor
-     * @param notCompletedColor
-     * @return string
-     */
     public String getProgressBar(long l, long m, int totalBars, char symbol, String completedColor, String notCompletedColor) {
         float percent = (float) l / m;
         int progressBars = (int) (totalBars * percent);
@@ -94,30 +66,14 @@ public abstract class ZUtils extends MessageUtils {
         return Strings.repeat(completedColor + symbol, progressBars) + Strings.repeat(notCompletedColor + symbol, totalBars - progressBars);
     }
 
-    /**
-     * Create a progress bar
-     *
-     * @param l
-     * @param m
-     * @param progressBar
-     * @return string
-     */
     public String getProgressBar(long l, long m, ProgressBar progressBar) {
         return this.getProgressBar(l, m, progressBar.getLenght(), progressBar.getSymbol(), progressBar.getCompletedColor(), progressBar.getNotCompletedColor());
     }
 
-    /**
-     * @param item
-     * @return the encoded item
-     */
     protected String encode(ItemStack item) {
         return ItemStackUtils.serializeItemStack(item);
     }
 
-    /**
-     * @param item
-     * @return the decoded item
-     */
     protected ItemStack decode(String item) {
         return ItemStackUtils.deserializeItemStack(item);
     }
@@ -168,7 +124,7 @@ public abstract class ZUtils extends MessageUtils {
      * @return the material according to his id
      */
     protected Material getMaterial(int id) {
-        return byId.length > id && id >= 0 ? byId[id] : Material.AIR;
+        return Material.AIR;
     }
 
     /**
@@ -609,8 +565,7 @@ public abstract class ZUtils extends MessageUtils {
         if (value < 10000) return format(value, "#.#");
         else if (value < 1000000) return Integer.valueOf((int) (value / 1000)) + "k ";
         else if (value < 1000000000) return format((value / 1000) / 1000, "#.#") + "m ";
-        else if (value < 1000000000000L)
-            return Integer.valueOf((int) (((value / 1000) / 1000) / 1000)) + "M ";
+        else if (value < 1000000000000L) return Integer.valueOf((int) (((value / 1000) / 1000) / 1000)) + "M ";
         else return "to much";
     }
 
@@ -622,8 +577,7 @@ public abstract class ZUtils extends MessageUtils {
         if (value < 10000) return format(value, "#.#");
         else if (value < 1000000) return Integer.valueOf((int) (value / 1000)) + "k ";
         else if (value < 1000000000) return format((value / 1000) / 1000, "#.#") + "m ";
-        else if (value < 1000000000000L)
-            return Integer.valueOf((int) (((value / 1000) / 1000) / 1000)) + "M ";
+        else if (value < 1000000000000L) return Integer.valueOf((int) (((value / 1000) / 1000) / 1000)) + "M ";
         else return "to much";
     }
 
@@ -816,52 +770,27 @@ public abstract class ZUtils extends MessageUtils {
      */
     public ItemStack playerHead(ItemStack itemStack, OfflinePlayer player) {
         String name = itemStack.hasItemMeta() && itemStack.getItemMeta().hasDisplayName() ? itemStack.getItemMeta().getDisplayName() : null;
-        if (NmsVersion.nmsVersion.getVersion() >= NmsVersion.V_1_13.getVersion()) {
-            if (itemStack.getType().equals(Material.PLAYER_HEAD) && name != null && name.startsWith("HEAD")) {
-                SkullMeta meta = (SkullMeta) itemStack.getItemMeta();
-                name = name.replace("HEAD", "");
-                if (name.length() == 0) meta.setDisplayName(null);
-                else meta.setDisplayName(name);
-                meta.setOwningPlayer(player);
-                itemStack.setItemMeta(meta);
-            }
-        } else {
-            if (itemStack.getType().equals(getMaterial(397)) && itemStack.getData().getData() == 3 && name != null && name.startsWith("HEAD")) {
-                SkullMeta meta = (SkullMeta) itemStack.getItemMeta();
-                name = name.replace("HEAD", "");
-                if (name.length() == 0) meta.setDisplayName(null);
-                else meta.setDisplayName(name);
-                meta.setOwner(player.getName());
-                itemStack.setItemMeta(meta);
-            }
+        if (itemStack.getType().equals(Material.PLAYER_HEAD) && name != null && name.startsWith("HEAD")) {
+            SkullMeta meta = (SkullMeta) itemStack.getItemMeta();
+            name = name.replace("HEAD", "");
+            if (name.length() == 0) meta.setDisplayName(null);
+            else meta.setDisplayName(name);
+            meta.setOwningPlayer(player);
+            itemStack.setItemMeta(meta);
         }
         return itemStack;
     }
 
-    /**
-     * @param itemStack
-     * @param player
-     * @return itemstack
-     */
     protected ItemStack playerHead() {
-        return NmsVersion.nmsVersion.getVersion() >= NmsVersion.V_1_13.getVersion() ? new ItemStack(Material.PLAYER_HEAD) : new ItemStack(getMaterial(397), 1, (byte) 3);
+        return new ItemStack(Material.PLAYER_HEAD);
     }
 
-    /**
-     * @param plugin
-     * @param classz
-     * @return T
-     */
     protected <T> T getProvider(Plugin plugin, Class<T> classz) {
         RegisteredServiceProvider<T> provider = plugin.getServer().getServicesManager().getRegistration(classz);
         if (provider == null) return null;
         return provider.getProvider() != null ? provider.getProvider() : null;
     }
-
-    /**
-     * @param configuration
-     * @return
-     */
+    
     protected PotionEffectType getPotion(String configuration) {
         for (PotionEffectType effectType : PotionEffectType.values())
             if (effectType.getName().equalsIgnoreCase(configuration)) return effectType;
@@ -915,8 +844,7 @@ public abstract class ZUtils extends MessageUtils {
      */
     protected boolean isPlayerHead(ItemStack itemStack) {
         Material material = itemStack.getType();
-        if (NmsVersion.nmsVersion.getVersion() >= NmsVersion.V_1_13.getVersion()) return material.equals(Material.PLAYER_HEAD);
-        return (material.equals(getMaterial(397))) && (itemStack.getDurability() == 3);
+        return material.equals(Material.PLAYER_HEAD);
     }
 
     /**
@@ -930,7 +858,7 @@ public abstract class ZUtils extends MessageUtils {
      */
     protected Object getPrivateField(Object object, String field) throws SecurityException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
         Class<?> clazz = object.getClass();
-        Field objectField = field.equals("commandMap") ? clazz.getDeclaredField(field) : field.equals("knownCommands") ? NmsVersion.nmsVersion.getVersion() >= NmsVersion.V_1_13.getVersion() ? clazz.getSuperclass().getDeclaredField(field) : clazz.getDeclaredField(field) : null;
+        Field objectField = field.equals("commandMap") ? clazz.getDeclaredField(field) : field.equals("knownCommands") ? clazz.getSuperclass().getDeclaredField(field) : null;
         objectField.setAccessible(true);
         Object result = objectField.get(object);
         objectField.setAccessible(false);

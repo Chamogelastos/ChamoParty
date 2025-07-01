@@ -7,7 +7,7 @@ import org.bukkit.entity.Player;
 
 import fr.maxlego08.menu.api.Inventory;
 import fr.maxlego08.menu.api.InventoryManager;
-import fr.maxlego08.menu.exceptions.InventoryException;
+import fr.maxlego08.menu.api.exceptions.InventoryException;
 import fr.maxlego08.zvoteparty.ZVotePartyPlugin;
 import fr.maxlego08.zvoteparty.api.enums.InventoryName;
 import fr.maxlego08.zvoteparty.zcore.utils.ZUtils;

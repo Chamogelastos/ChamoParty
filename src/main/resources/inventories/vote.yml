@@ -4,8 +4,7 @@ type: VOTE
 items:
   slots:
     item:
-      material: STAINED_GLASS_PANE
-      data: 7
+      material: GRAY_STAINED_GLASS_PANE
       name: "&e"
     slots:
       - 0
@@ -31,10 +30,9 @@ items:
       - 42
       - 43
       - 44
-  player:
+  player:   
     item:
-      material: SKULL_ITEM
-      data: 3
+      material: PLAYER_HEAD
       name: "&a%player_name%"
       playerHead: "%player%"
       lore:
@@ -43,9 +41,9 @@ items:
         - "&f&l» &7You have &f%zvoteparty_player_votes%&7 votes"
         - ""
         - "&f&l» &dVoteParty &8- &b%zvoteparty_votes_recorded% &8/ &a%zvoteparty_votes_required_total%"
-        - "&f&l» %zvoteparty_votes_progressbar%"
+        - "&f&l» %zvoteparty_votes_progressbar%"        
         - ""
-        - "&7&m-------------------------------------"
+        - "&7&m-------------------------------------"      
     slot: 4
   votes1:
     closeInventory: true

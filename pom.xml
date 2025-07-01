@@ -98,6 +98,11 @@
             <id>placeholderapi</id>
             <url>https://repo.extendedclip.com/content/repositories/placeholderapi/</url>
         </repository>
+        <repository>
+            <id>groupez-releases</id>
+            <name>GroupeZ Repository</name>
+            <url>https://repo.groupez.dev/releases</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -132,9 +137,9 @@
             <scope>provided</scope>
         </dependency>
         <dependency>
-            <groupId>com.github.Maxlego08</groupId>
-            <artifactId>zMenu-API</artifactId>
-            <version>1.0.2.7</version>
+            <groupId>fr.maxlego08.menu</groupId>
+            <artifactId>zmenu-api</artifactId>
+            <version>1.1.0.0</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
