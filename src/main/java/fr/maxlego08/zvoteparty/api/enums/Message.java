@@ -69,6 +69,12 @@ public enum Message {
 			"", 
 			"§8§m-+------------------------------+-"
 			), 
+	NOT_ELIGIBLE_PARTY(MessageType.CENTER,
+        "§8§m-+------------------------------+-",
+        "",
+        "§cYou didn’t vote, so you aren’t eligible for the Vote Party rewards!",
+        "",
+        "§8§m-+------------------------------+-");
 	
 	VOTE_STARTPARTY("§aYou just launched the voting party."),
 	
