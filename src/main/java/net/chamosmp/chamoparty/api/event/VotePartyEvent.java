@@ -19,8 +19,9 @@ public class VotePartyEvent extends Event {
 		return handlers;
 	}
 	
-	public void callEvent(){
+	public boolean callEvent(){
 		Bukkit.getPluginManager().callEvent(this);
+		return false;
 	}
 
 }
