@@ -24,6 +24,18 @@ gradlew shadowJar
 # API
 To use the api
 
+Kotlin DSL (build.gradle.kts)
+``` kotlin
+compileOnly("net.chamosmp.net:chamoparty:version")
+```
+Maven (pom.xml)
+``` xml
+<dependency>
+  <groupId>net.chamosmp</groupId>
+  <artifactId>chamoparty</artifactId>
+  <version>0.0.1</version>
+</dependency>
+```
 ## FAQ
 ### **Add-Ons**<br>
 Keep in mind that this plugin will not work with "addons" that worked with zVoteParty as it changed its classes to net.chamosmp.chamoparty and its plugin name to ChamoParty but that api has still remained the same
