@@ -6,7 +6,7 @@ plugins {
 }
 
 group = "net.chamosmp.zvoteparty"
-version = "1.0.0-DEV-1"
+version = "0.0.1"
 description = "zVoteParty-1.1.0.5"
 java.sourceCompatibility = JavaVersion.VERSION_25
 
