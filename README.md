@@ -23,6 +23,3 @@ gradlew shadowJar
 
 # API
 To use the api
-``` kotlin
-./gradlew shadowJar
-```
