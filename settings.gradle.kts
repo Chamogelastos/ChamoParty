@@ -1,1 +1,1 @@
-rootProject.name = "zVoteParty"
+rootProject.name = "ChamoParty"

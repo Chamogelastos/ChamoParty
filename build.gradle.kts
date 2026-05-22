@@ -5,9 +5,9 @@ plugins {
     id("xyz.jpenilla.run-paper") version "3.0.2"
 }
 
-group = "net.chamosmp.zvoteparty"
+group = "net.chamosmp"
 version = "0.0.1"
-description = "zVoteParty-1.1.0.5"
+description = "ChamoParty v0.0.1 ready to thrive"
 java.sourceCompatibility = JavaVersion.VERSION_25
 
 repositories {
