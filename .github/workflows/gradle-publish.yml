@@ -35,6 +35,13 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x gradlew
 
+      - name: Debug token
+        run: |
+          echo "Actor: $GITHUB_ACTOR"
+          echo "Token set: ${{ secrets.GH_PACKAGES_TOKEN != '' }}"
+        env:
+          GITHUB_ACTOR: ${{ github.actor }}
+
       - name: Build with Gradle Wrapper
         run: ./gradlew shadowJar
 
