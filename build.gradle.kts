@@ -119,6 +119,17 @@ tasks.processResources {
 }
 
 publishing {
+    publications {
+        create<MavenPublication>("shadow") {
+            groupId = project.group.toString()
+            artifactId = "chamoparty"
+            version = project.version.toString()
+
+            artifact(tasks.shadowJar) {
+                classifier = "" // removes the "-all" suffix
+            }
+        }
+    }
     repositories {
         maven {
             name = "GitHubPackages"
