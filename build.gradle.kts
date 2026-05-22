@@ -135,8 +135,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/sqd-studios/chamoparty")
             credentials {
-                username = System.getenv("USERNAME")
-                password = System.getenv("GITHUB_TOKEN")
+                username = System.getenv("GITHUB_ACTOR") ?: project.findProperty("gpr.user") as String?
+                password = System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key") as String?
             }
         }
     }
