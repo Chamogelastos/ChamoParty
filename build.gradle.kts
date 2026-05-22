@@ -1,18 +1,18 @@
-import org.gradle.internal.declarativedsl.schemaBuilder.isValidNestedModelType
-
 plugins {
     id("java-library")
     id("maven-publish")
     id("com.gradleup.shadow") version "9.4.1"
+    id("xyz.jpenilla.run-paper") version "3.0.2"
 }
 
-group = "fr.maxlego08.zvoteparty"
-version = "1.1.0.5"
+group = "net.chamosmp.zvoteparty"
+version = "1.0.0-DEV-1"
 description = "zVoteParty-1.1.0.5"
 java.sourceCompatibility = JavaVersion.VERSION_25
 
 repositories {
     mavenLocal()
+    mavenCentral()
     maven {
         url = uri("https://jitpack.io")
     }
@@ -36,6 +36,14 @@ repositories {
     maven {
         url = uri("https://repo.maven.apache.org/maven2/")
     }
+    maven {
+        name = "tcoded-releases"
+        url = uri("https://repo.tcoded.com/releases")
+    }
+    maven {
+        name = "papermc"
+        url = uri("https://repo.papermc.io/repository/maven-public/")
+    }
 }
 
 /*dependencies {
@@ -54,7 +62,7 @@ repositories {
 
  */
 dependencies {
-    implementation("org.spigotmc:spigot-api:1.21.4-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
     compileOnly("redis.clients:jedis:5.1.3")
     implementation("com.github.NuVotifier.NuVotifier:nuvotifier-api:2.7.2")
     implementation("com.github.NuVotifier.NuVotifier:nuvotifier-bukkit:2.7.2")
@@ -62,28 +70,27 @@ dependencies {
     implementation("fr.maxlego08.menu:zmenu-api:1.1.1.4")
     implementation("me.clip:placeholderapi:2.11.6")
     implementation("commons-lang:commons-lang:2.6")
-    compileOnly("com.github.technicallycoded:FoliaLib:0.4.3")
+    //compileOnly("com.github.technicallycoded:FoliaLib:0.4.3")
+    implementation("com.tcoded:FoliaLib:0.5.1")
 }
 
 tasks.shadowJar {
     configurations = project.configurations.runtimeClasspath.map { setOf(it) }
 
     dependencies {
-        // Only merge bStats into the final jar, no other dependencies
     }
 
-    // Relocate bStats into the plugin's package to avoid conflicts with other
-    // plugins using bStats
     //relocate("org.bstats", project.group.toString())
+    relocate("com.tcoded.folialib", "net.chamosmp.zvoteparty.libs.folialib")
 }
 
 
 
 publishing {
-    publications.create<MavenPublication>("maven") {
-        from(components["java"])
+    repositories {
+
+        }
     }
-}
 
 tasks.withType<JavaCompile>() {
     options.encoding = "UTF-8"
@@ -91,4 +98,27 @@ tasks.withType<JavaCompile>() {
 
 tasks.withType<Javadoc>() {
     options.encoding = "UTF-8"
+}
+
+tasks {
+    runServer {
+        downloadPlugins {
+            github("NuVotifier", "NuVotifier", "v2.7.3", "nuvotifier.jar")
+            github("Maxlego08", "zMenu", "1.1.1.4", "zMenu-1.1.1.4.jar")
+        }
+
+        minecraftVersion("26.1.2")
+    }
+    runPaper.folia.registerTask()
+}
+
+
+tasks.processResources {
+    val props = mapOf("version" to project.version)
+    inputs.properties(props)
+    filteringCharset = "UTF-8"
+
+    filesMatching("plugin.yml") {
+        expand(props)
+    }
 }
