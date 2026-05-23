@@ -10,6 +10,8 @@ Here is the checklist:
 - [ ] Better MySQL Support
 - [x] Use better systems
 - [x] Modern Version support (Kind of?)
+- [ ] Good Api
+- [ ] Production Ready
 
 # Building
 Build with PowerShell or a Linux Console
