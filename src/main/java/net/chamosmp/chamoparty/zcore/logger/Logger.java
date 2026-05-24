@@ -48,13 +48,13 @@ public class Logger {
 	}
 	
 	public void log(String message, LogType type){
-		Bukkit.getConsoleSender().sendMessage(prefix + "| " + type.getColor() + getColoredMessage(message));
+		MiniMessage mm = MiniMessage.miniMessage();
+		Bukkit.getConsoleSender().sendMessage(mm.deserialize(prefix + "| " + type.getColor() + message));
 	}
 	
 	public void log(String message){
 		MiniMessage mm = MiniMessage.miniMessage();
-
-		Component parsed = mm.deserialize(prefix + "| " + message);
+		Bukkit.getConsoleSender().sendMessage(mm.deserialize(prefix + "| " + message));
 
 		//Bukkit.getConsoleSender().sendMessage("§8[§e"+prefix+"§8] §e" + getColoredMessage(message));
 	}
