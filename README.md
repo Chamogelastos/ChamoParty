@@ -34,7 +34,7 @@ maven {
 }
 ```
 ``` kotlin
-compileOnly("net.chamosmp.net:chamoparty:version")
+compileOnly("net.chamosmp:ChamoParty:version")
 ```
 Maven (pom.xml)
 ``` xml
@@ -47,8 +47,8 @@ Maven (pom.xml)
 ``` xml
 <dependency>
   <groupId>net.chamosmp</groupId>
-  <artifactId>chamoparty</artifactId>
-  <version>0.0.1</version>
+  <artifactId>ChamoParty</artifactId>
+  <version>version/version>
 </dependency>
 ```
 ## FAQ
