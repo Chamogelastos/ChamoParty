@@ -2,6 +2,8 @@ package net.chamosmp.chamoparty.zcore.utils;
 
 import java.lang.reflect.Constructor;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -15,38 +17,39 @@ import net.chamosmp.chamoparty.zcore.utils.players.ActionBar;
 public abstract class MessageUtils extends LocationUtils {
 
 	/**
-	 * 
-	 * @param player
-	 * @param message
-	 * @param args
+	 *
+	 * @param player The player to send the message to
+	 * @param message The message to send
+	 * @param args The arguments?
 	 */
 	protected void messageWO(CommandSender player, Message message, Object... args) {
-		player.sendMessage(getMessage(message, args));
+
+		player.sendRichMessage(getMessage(message, args));
 	}
 
 	protected void messageWO(CommandSender player, String message, Object... args) {
-		player.sendMessage(getMessage(message, args));
+		player.sendRichMessage(getMessage(message, args));
 	}
 
 	protected void message(CommandSender sender, String message, Object... args) {
-		sender.sendMessage(Message.PREFIX.msg() + getMessage(message, args));
+		sender.sendRichMessage(Message.PREFIX.msg() + getMessage(message, args));
 	}
 
 	/**
 	 * 
-	 * @param player
-	 * @param message
-	 * @param args
+	 * @param player The player to send the message to
+	 * @param message The message to send
+	 * @param args The arguments?
 	 */
 	protected void message(CommandSender sender, Message message, Object... args) {
 
 		if (sender instanceof ConsoleCommandSender) {
 			if (message.getMessages().size() > 0) {
 				message.getMessages().forEach(msg -> {				
-					sender.sendMessage(Message.PREFIX.msg() + this.papi(getMessage(msg, args), null));
+					sender.sendRichMessage(Message.PREFIX.msg() + this.papi(getMessage(msg, args), null));
 				});
 			} else {			
-				sender.sendMessage(Message.PREFIX.msg() + this.papi(getMessage(message, args), null));
+				sender.sendRichMessage(Message.PREFIX.msg() + this.papi(getMessage(message, args), null));
 			}
 		} else {
 
@@ -58,18 +61,18 @@ public abstract class MessageUtils extends LocationUtils {
 			case TCHAT:
 				if (message.getMessages().size() > 0) {
 					message.getMessages().forEach(msg -> {
-						sender.sendMessage(Message.PREFIX.msg() + this.papi(getMessage(msg, args), player));
+						sender.sendRichMessage(Message.PREFIX.msg() + this.papi(getMessage(msg, args), player));
 					});
 				} else
-					sender.sendMessage(Message.PREFIX.msg() + this.papi(getMessage(message, args), player));
+					sender.sendRichMessage(Message.PREFIX.msg() + this.papi(getMessage(message, args), player));
 				break;
 			case CENTER:
 				if (message.getMessages().size() > 0) {
 					message.getMessages().forEach(msg -> {
-						sender.sendMessage(this.papi(this.getCenteredMessage(getMessage(msg, args)), player));
+						sender.sendRichMessage(this.papi(this.getCenteredMessage(getMessage(msg, args)), player));
 					});
 				} else
-					sender.sendMessage(this.papi(this.getCenteredMessage(getMessage(message, args)), player));
+					sender.sendRichMessage(this.papi(this.getCenteredMessage(getMessage(message, args)), player));
 				break;
 			case TITLE:
 				// gestion du title message
@@ -118,7 +121,7 @@ public abstract class MessageUtils extends LocationUtils {
 
 	protected String getMessage(String message, Object... args) {
 		if (args.length % 2 != 0)
-			System.err.println("Impossible d'appliquer la m§thode pour les messages.");
+			System.err.println("This/The method cannot be applied to messages.");
 		else
 			for (int a = 0; a < args.length; a += 2) {
 				String replace = args[a].toString();
@@ -195,11 +198,11 @@ public abstract class MessageUtils extends LocationUtils {
 
 	/**
 	 * 
-	 * @param message
+	 * @param message The message you want to send
 	 * @return message
 	 */
 	protected String getCenteredMessage(String message) {
-		if (message == null || message.equals(""))
+		if (message == null || message.isEmpty())
 			return "";
 		message = ChatColor.translateAlternateColorCodes('&', message);
 

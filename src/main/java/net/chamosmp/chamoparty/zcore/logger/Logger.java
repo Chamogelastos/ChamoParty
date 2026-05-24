@@ -1,5 +1,7 @@
 package net.chamosmp.chamoparty.zcore.logger;
 
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 
 public class Logger {
@@ -46,11 +48,15 @@ public class Logger {
 	}
 	
 	public void log(String message, LogType type){
-		Bukkit.getConsoleSender().sendMessage("§8[§e"+prefix+"§8] " + type.getColor() + getColoredMessage(message));
+		Bukkit.getConsoleSender().sendMessage(prefix + " |" + type.getColor() + getColoredMessage(message));
 	}
 	
 	public void log(String message){
-		Bukkit.getConsoleSender().sendMessage("§8[§e"+prefix+"§8] §e" + getColoredMessage(message));
+		MiniMessage mm = MiniMessage.miniMessage();
+
+		Component parsed = mm.deserialize(prefix + " |" + message);
+
+		//Bukkit.getConsoleSender().sendMessage("§8[§e"+prefix+"§8] §e" + getColoredMessage(message));
 	}
 	
 	public void log(String message, Object... args){
