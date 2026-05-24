@@ -120,23 +120,16 @@ tasks.processResources {
 
 publishing {
     publications {
-        create<MavenPublication>("shadow") {
-            groupId = project.group.toString()
-            artifactId = "chamoparty"
-            version = project.version.toString()
-
-            artifact(tasks.shadowJar) {
-                classifier = "" // removes the "-all" suffix
-            }
+        create<MavenPublication>("maven") {
+            from(components["java"])
         }
     }
     repositories {
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/sqd-studios/chamoparty")
+            url = uri("https://maven.chamosmp.net/releases")
             credentials {
-                username = System.getenv("GITHUB_ACTOR") ?: project.findProperty("gpr.user") as String?
-                password = System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key") as String?
+                username = System.getenv("REPOSILITE_USER")
+                password = System.getenv("REPOSILITE_TOKEN")
             }
         }
     }
