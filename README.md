@@ -26,11 +26,24 @@ gradlew shadowJar
 # API
 To use the api
 
-Kotlin DSL (build.gradle.kts)
+Gradle Kotlin DSL (build.gradle.kts)
+``` kotlin
+maven {
+    name = "chamosmpRepoReleases"
+    url = uri("https://maven.chamosmp.net/releases")
+}
+```
 ``` kotlin
 compileOnly("net.chamosmp.net:chamoparty:version")
 ```
 Maven (pom.xml)
+``` xml
+<repository>
+  <id>chamosmp-repo-releases</id>
+  <name>ChamoSMP Maven Repository</name>
+  <url>https://maven.chamosmp.net/releases</url>
+</repository>
+```
 ``` xml
 <dependency>
   <groupId>net.chamosmp</groupId>
