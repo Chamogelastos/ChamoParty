@@ -1,10 +1,12 @@
 package net.chamosmp.chamoparty;
 
 import java.util.UUID;
+import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
 import com.tcoded.folialib.FoliaLib;
 import com.tcoded.folialib.impl.PlatformScheduler;
+import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.ServicePriority;
 
@@ -43,6 +45,7 @@ public class ZVotePartyPlugin extends ZPlugin {
 
 	@Override
 	public void onEnable() {
+
 
 		ZPlaceholderApi.getInstance().setPlugin(this);
 
@@ -111,12 +114,20 @@ public class ZVotePartyPlugin extends ZPlugin {
 			this.addListener(new VotifierListener(this));
 		}
 
-		if (this.isEnable(Plugins.ZMENU)) {
-			this.loader = new ZMenuLoader(this);
-			this.loader.load();
-		}
 
-		reloadInventories();
+
+
+		if (this.isEnable(Plugins.ZMENU)) {
+			new FoliaLib(this).getScheduler().runLater(() -> {
+				this.loader = new ZMenuLoader(this);
+				this.loader.load();
+				if (this.loader.isLoaded()) {
+					reloadInventories();
+				} else {
+					this.getLogger().warning("Failed to hook into zMenu.");
+				}
+			}, 1L);
+		}
 
 		VersionChecker checker = new VersionChecker(this, 124);
 		checker.useLastVersion();
@@ -177,9 +188,8 @@ public class ZVotePartyPlugin extends ZPlugin {
 	}
 
 	public void reloadInventories() {
-		if (this.isEnable(Plugins.ZMENU)) {
-			this.loader.reload();
-		}
+		if (this.loader == null) return; // zMenu not present
+		this.loader.reload();
 	}
 
     public static PlatformScheduler getScheduler() {

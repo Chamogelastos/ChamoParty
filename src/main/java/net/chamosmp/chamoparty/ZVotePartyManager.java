@@ -7,9 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
 
-import org.bukkit.Bukkit;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.Sound;
+import org.bukkit.*;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -202,7 +200,10 @@ public class ZVotePartyManager extends YamlUtils implements VotePartyManager {
                         String soundName = parts[0].toUpperCase();
                         float volume = parts.length > 1 ? Float.parseFloat(parts[1]) : 1.0f;
                         float pitch = parts.length > 2 ? Float.parseFloat(parts[2]) : 1.0f;
-                        player.playSound(player.getLocation(), Sound.valueOf(soundName), volume, pitch);
+                        Sound sound = Registry.SOUNDS.get(NamespacedKey.minecraft(soundName.toLowerCase()));
+                        if (sound != null) {
+                            player.playSound(player.getLocation(), sound, volume, pitch);
+                        }
                     } catch (Exception ignored) {}
                 }
 

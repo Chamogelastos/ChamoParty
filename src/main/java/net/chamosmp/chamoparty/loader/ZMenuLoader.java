@@ -31,6 +31,10 @@ public class ZMenuLoader extends ZUtils {
 	}
 
 	public void reload() {
+		if (this.inventoryManager == null) {
+			this.plugin.getLogger().warning("Skipping inventory reload — zMenu is not available.");
+			return;
+		}
 
 		File file = new File(this.plugin.getDataFolder(), "inventories/" + InventoryName.VOTE.getName() + ".yml");
 		try {
@@ -48,6 +52,10 @@ public class ZMenuLoader extends ZUtils {
 			this.inventoryManager.openInventory(player, inventory);
 		} else
 			message(player, "§cErreur with inventory votes !");
+	}
+
+	public boolean isLoaded() {
+		return this.inventoryManager != null;
 	}
 
 }

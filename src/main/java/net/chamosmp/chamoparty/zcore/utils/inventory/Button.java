@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
 
 import net.chamosmp.chamoparty.zcore.utils.ZUtils;
@@ -13,7 +14,7 @@ public class Button extends ZUtils {
 
 	private final int slot;
 	private final String name;
-	private final MaterialData item;
+	private final ItemStack item;
 	private final List<String> lore;
 
 	/**
@@ -28,7 +29,7 @@ public class Button extends ZUtils {
 		super();
 		this.slot = slot;
 		this.name = name;
-		this.item = new MaterialData(material, (byte) data);
+		this.item = new ItemStack(material);
 		this.lore = lore;
 	}
 
@@ -82,7 +83,7 @@ public class Button extends ZUtils {
 	/**
 	 * @return the item
 	 */
-	public MaterialData getItem() {
+	public ItemStack getItem() {
 		return item;
 	}
 

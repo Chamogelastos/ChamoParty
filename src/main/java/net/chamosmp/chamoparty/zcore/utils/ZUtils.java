@@ -597,7 +597,7 @@ public abstract class ZUtils extends MessageUtils {
 
     protected Enchantment enchantFromString(String str) {
         for (Enchantment enchantment : Enchantment.values())
-            if (enchantment.getName().equalsIgnoreCase(str)) return enchantment;
+            if (enchantment.getKey().getKey().equalsIgnoreCase(str)) return enchantment;
         return null;
     }
 

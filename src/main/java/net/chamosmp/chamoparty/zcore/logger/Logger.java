@@ -31,10 +31,10 @@ public class Logger {
 	}
 	
 	public enum LogType{
-		ERROR("§c"),
-		INFO("§7"),
-		WARNING("§6"),
-		SUCCESS("§2");
+		ERROR("<dark_red>"),
+		INFO("<yellow>"),
+		WARNING("<red>"),
+		SUCCESS("<green>");
 		
 		private final String color;
 		
@@ -48,13 +48,13 @@ public class Logger {
 	}
 	
 	public void log(String message, LogType type){
-		Bukkit.getConsoleSender().sendMessage(prefix + " |" + type.getColor() + getColoredMessage(message));
+		Bukkit.getConsoleSender().sendMessage(prefix + "| " + type.getColor() + getColoredMessage(message));
 	}
 	
 	public void log(String message){
 		MiniMessage mm = MiniMessage.miniMessage();
 
-		Component parsed = mm.deserialize(prefix + " |" + message);
+		Component parsed = mm.deserialize(prefix + "| " + message);
 
 		//Bukkit.getConsoleSender().sendMessage("§8[§e"+prefix+"§8] §e" + getColoredMessage(message));
 	}

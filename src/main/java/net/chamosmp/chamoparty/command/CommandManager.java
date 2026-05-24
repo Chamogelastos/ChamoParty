@@ -196,7 +196,7 @@ public class CommandManager extends ZUtils implements CommandExecutor, TabComple
 			if (command.sameSubCommands()) {
 				Logger.info(command.toString() + " command to an argument similar to its parent command !",
 						LogType.ERROR);
-				this.plugin.getPluginLoader().disablePlugin(this.plugin);
+				Bukkit.getPluginManager().disablePlugin(this.plugin);
 			}
 		});
 	}

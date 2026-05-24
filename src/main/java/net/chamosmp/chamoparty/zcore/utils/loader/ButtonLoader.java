@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bukkit.Material;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.material.MaterialData;
 
 import net.chamosmp.chamoparty.zcore.utils.ZUtils;
@@ -31,9 +32,10 @@ public class ButtonLoader extends ZUtils implements Loader<Button> {
 		configuration.set(path + "name", object.getName() != null ? colorReverse(object.getName()) : null);
 		configuration.set(path + "slot", object.getSlot());
 		configuration.set(path + "lore", object.getLore() == null ? null : object.getLore());
-		MaterialData materialData = object.getItem();
-		configuration.set(path + "material", materialData == null ? null : materialData.getItemType());
-		configuration.set(path + "data", materialData == null ? null : materialData.getData());
+		ItemStack itemStack = object.getItem();
+		Material material = itemStack.getType();
+		configuration.set(path + "material", itemStack == null ? null : material.name());
+		configuration.set(path + "data", null);
 
 	}
 
