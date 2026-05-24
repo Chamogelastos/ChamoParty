@@ -48,7 +48,7 @@ Maven (pom.xml)
 <dependency>
   <groupId>net.chamosmp</groupId>
   <artifactId>ChamoParty</artifactId>
-  <version>version/version>
+  <version>version</version>
 </dependency>
 ```
 ## FAQ
