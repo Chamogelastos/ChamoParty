@@ -45,7 +45,7 @@ import java.util.logging.Level;
 
 public abstract class ZPlugin extends JavaPlugin {
 
-    private final Logger log = new Logger(this.getDescription().getFullName());
+    private final Logger log = new Logger(this.getPluginMeta().getName() + " v" + getPluginMeta().getVersion());
     private final List<Saveable> savers = new ArrayList<>();
     private final List<ListenerAdapter> listenerAdapters = new ArrayList<>();
     private final List<String> files = new ArrayList<>();
@@ -59,8 +59,8 @@ public abstract class ZPlugin extends JavaPlugin {
 
         this.enableTime = System.currentTimeMillis();
 
-        this.log.log("=== ENABLE START ===");
-        this.log.log("Plugin Version V<&>c" + getDescription().getVersion(), LogType.INFO);
+        this.log.log("Enabling");
+        this.log.log("Plugin Version V" + this.getPluginMeta().getVersion(), LogType.INFO);
 
         this.getDataFolder().mkdirs();
 
@@ -91,17 +91,17 @@ public abstract class ZPlugin extends JavaPlugin {
 
         if (this.commandManager != null) this.commandManager.validCommands();
 
-        this.log.log("=== ENABLE DONE <&>7(<&>6" + Math.abs(enableTime - System.currentTimeMillis()) + "ms<&>7) <&>e===");
+        this.log.log("Done enabling (" + Math.abs(enableTime - System.currentTimeMillis()) + "ms)");
 
     }
 
     protected void preDisable() {
         this.enableTime = System.currentTimeMillis();
-        this.log.log("=== DISABLE START ===");
+        this.log.log("Starting disabling");
     }
 
     protected void postDisable() {
-        this.log.log("=== DISABLE DONE <&>7(<&>6" + Math.abs(enableTime - System.currentTimeMillis()) + "ms<&>7) <&>e===");
+        this.log.log("Done disabling (" + Math.abs(enableTime - System.currentTimeMillis()) + "ms)");
 
     }
 

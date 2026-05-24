@@ -92,6 +92,7 @@ tasks.shadowJar {
 
 
 tasks.withType<JavaCompile>() {
+    options.compilerArgs.add("-Xlint:deprecation")
     options.encoding = "UTF-8"
 }
 

@@ -21,6 +21,7 @@ import net.chamosmp.chamoparty.zcore.logger.Logger;
 /**
  * 
  * @author Maxlego08
+ * @author Chamogelastos
  *
  */
 public class VersionChecker implements Listener {
@@ -51,7 +52,7 @@ public class VersionChecker implements Listener {
 		Bukkit.getPluginManager().registerEvents(this, this.plugin); // Register
 																		// event
 
-		String pluginVersion = plugin.getDescription().getVersion();
+		String pluginVersion = plugin.getPluginMeta().getVersion();
 		AtomicBoolean atomicBoolean = new AtomicBoolean();
 		this.getVersion(version -> {
 

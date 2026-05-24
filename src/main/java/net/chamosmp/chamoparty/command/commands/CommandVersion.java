@@ -16,7 +16,7 @@ public class CommandVersion extends VCommand {
 	@Override
 	protected CommandType perform(ZVotePartyPlugin plugin) {
 		
-		message(sender, "§aVersion du plugin§7: §2" + plugin.getDescription().getVersion());
+		message(sender, "§aVersion du plugin§7: §2" + plugin.getPluginMeta().getVersion());
 		message(sender, "§aAuteur§7: §2Maxlego08");
 		message(sender, "§aDiscord§7: §2http://discord.groupez.dev/");
 		message(sender, "§aDownload now§7: §2https://groupez.dev/resources/124");

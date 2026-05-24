@@ -110,7 +110,7 @@ public class ZInventoryManager extends ListenerAdapter {
 			if (!exist(player))
 				return;
 			VInventory gui = playerInventories.get(player.getUniqueId());
-			if (gui.getGuiName() == null || gui.getGuiName().length() == 0) {
+			if (gui.getGuiName() == null || gui.getGuiName().isEmpty()) {
 				Logger.info("An error has occurred with the menu ! " + gui.getClass().getName());
 				return;
 			}

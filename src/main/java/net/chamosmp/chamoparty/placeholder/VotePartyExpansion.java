@@ -19,7 +19,7 @@ public class VotePartyExpansion extends PlaceholderExpansion {
 
 	@Override
 	public String getAuthor() {
-		return "Maxlego08";
+		return "Chamogelastos";
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class VotePartyExpansion extends PlaceholderExpansion {
 
 	@Override
 	public String getVersion() {
-		return plugin.getDescription().getVersion();
+		return plugin.getPluginMeta().getVersion();
 	}
 
 	@Override
