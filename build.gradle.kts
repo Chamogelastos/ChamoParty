@@ -109,6 +109,7 @@ tasks {
         downloadPlugins {
             github("NuVotifier", "NuVotifier", "v2.7.3", "nuvotifier.jar")
             github("Maxlego08", "zMenu", "1.1.1.4", "zMenu-1.1.1.4.jar")
+            github("PlaceholderAPI", "PlaceholderAPI", "2.12.2", "PlaceholderAPI-2.12.2.jar")
         }
 
         minecraftVersion("26.1.2")
