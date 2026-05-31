@@ -52,7 +52,7 @@ public enum Message {
 
 	VOTE_BROADCAST_ACTION(MessageType.ACTION, "<white>%player% <gray>has just voted <dark_gray>(<aqua>%zvoteparty_votes_recorded%<gray>/<green>%zvoteparty_votes_required_total%<dark_gray>)"),
 	VOTE_BROADCAST_TCHAT("<white>%player% <gray>has just voted <dark_gray>(<aqua>%zvoteparty_votes_recorded%<gray>/<green>%zvoteparty_votes_required_total%<dark_gray>)"),
-	VOTE_MESSAGE("<gray>You have just voted for the server <dark_purple>Serveur name<gray>."),
+	VOTE_MESSAGE("<gray>You have just voted for the server <dark_purple>Server name<gray>."),
 	VOTE_LATER("<gray>You have just received <aqua>%amount% <gray>votes."),
 	VOTE_SEND("<gray>You just gave a vote to <white>%player%<gray>"),
 	VOTE_REMOVE_SUCCESS("<green>You have just removed a yours from the <white>%player%<green>."),
