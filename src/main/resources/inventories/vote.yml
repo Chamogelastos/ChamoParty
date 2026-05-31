@@ -1,66 +1,39 @@
-name: "&7Vote"
-size: 45
+name: '<aqua>Vote'
+size: 27
 type: VOTE
 items:
-  slots:
+  fill:
     item:
       material: GRAY_STAINED_GLASS_PANE
-      name: "&e"
     slots:
-      - 0
-      - 1
-      - 2
-      - 3      
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 18
-      - 27
-      - 17
-      - 26
-      - 35
-      - 36
-      - 37
-      - 38
-      - 39
-      - 40
-      - 41
-      - 42
-      - 43
-      - 44
-  player:   
-    item:
-      material: PLAYER_HEAD
-      name: "&a%player_name%"
-      playerHead: "%player%"
-      lore:
-        - "&7&m-------------------------------------"
-        - ""
-        - "&f&l» &7You have &f%zvoteparty_player_votes%&7 votes"
-        - ""
-        - "&f&l» &dVoteParty &8- &b%zvoteparty_votes_recorded% &8/ &a%zvoteparty_votes_required_total%"
-        - "&f&l» %zvoteparty_votes_progressbar%"        
-        - ""
-        - "&7&m-------------------------------------"      
-    slot: 4
-  votes1:
-    closeInventory: true
-    messages:
-      - "&fHey &b%player% &fclick here to vote"
-      - "&7https://serveur-minecraft-vote.fr/serveurs/onoria.1"
-    slot: 20
+      - 0-10
+      - 12-14
+      - 16-26
+  vote-link:
+    slot: 11
     item:
       material: HOPPER
-      name: "&eSite &7N»&f1"
+      name: '<yellow>Vote'
       lore:
-        - "&7&m-------------------------------------"
-        - ""
-        - "&f&l» &7Click to vote on"
-        - "  &bhttps://serveur-minecraft-vote.fr"
-        - ""
-        - "&9[!] &8You can vote any time"
-        - "&81 hour and 30 minutes"
-        - ""
-        - "&7&m-------------------------------------"
+        - '<white><b>| <dark_gray>Click to vote on'
+        - '  <aqua>(replace_your_vote_link_here)'
+        - ''
+        - '<dark_blue>[!] <dark_gray>You can vote every'
+        - '<dark_gray>(How often they can vote)'
+    close-inventory: true
+    actions:
+      - type: message
+        messages:
+          - '&fHey &b%player% &fclick here to vote'
+          - '&7(replace_your_vote_link_here)'
+        mini-message: true
+  player-head:
+    slot: 15
+    item:
+      material: PLAYER_HEAD
+      name: '<green>%player_name%'
+      lore:
+        - '<white><b>| <gray>You have <white>%zvoteparty_player_votes%<gray> votes'
+        - ''
+        - '<white><b>| <light_purple>VoteParty <dark_gray>- <aqua>%zvoteparty_votes_recorded% <dark_gray>/ <green>%zvoteparty_votes_required_total%'
+        - '<white><b>| %zvoteparty_votes_progressbar%'
