@@ -15,13 +15,10 @@ public class CommandVersion extends VCommand {
 
 	@Override
 	protected CommandType perform(ZVotePartyPlugin plugin) {
-		
-		message(sender, "§aVersion du plugin§7: §2" + plugin.getPluginMeta().getVersion());
-		message(sender, "§aAuteur§7: §2Maxlego08");
-		message(sender, "§aDiscord§7: §2http://discord.groupez.dev/");
-		message(sender, "§aDownload now§7: §2https://groupez.dev/resources/124");
-		message(sender, "§aServeur Minecraft Vote§7: §fhttps://serveur-minecraft-vote.fr/");
-		message(sender, "§aSponsor§7: §chttps://serveur-minecraft-vote.fr/?ref=345");
+
+		message(sender, "<green>Version<gray>: <dark_green>" + plugin.getPluginMeta().getVersion());
+		message(sender, "<green>Organization<gray>: <dark_green>SQD Studios");
+		message(sender, "<green>Download<gray>: <dark_green>https://modrinth.com/project/chamoparty");
 		
 		return CommandType.SUCCESS;
 	}
