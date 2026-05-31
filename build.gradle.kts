@@ -76,6 +76,7 @@ dependencies {
     implementation("commons-lang:commons-lang:2.6")
     //compileOnly("com.github.technicallycoded:FoliaLib:0.4.3")
     implementation("com.tcoded:FoliaLib:0.5.1")
+    implementation("org.bstats:bstats-bukkit:3.2.1")
 }
 
 tasks.shadowJar {
@@ -86,6 +87,7 @@ tasks.shadowJar {
 
     //relocate("org.bstats", project.group.toString())
     relocate("com.tcoded.folialib", "net.chamosmp.zvoteparty.libs.folialib")
+    relocate("org.bstats", project.group.toString())
 }
 
 
