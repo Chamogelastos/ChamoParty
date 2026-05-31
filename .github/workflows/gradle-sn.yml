@@ -1,5 +1,4 @@
-name: Gradle Package
-
+name: Release packages (Snapshots)
 on:
   release:
     types: [created]
@@ -30,8 +29,8 @@ jobs:
       - name: Build
         run: ./gradlew shadowJar
 
-      - name: Publish to GitHub Packages
-        run: ./gradlew publish
+      - name: Publish to maven.chamosmp.net
+        run: ./gradlew publishMavenPublicationToChamoSMP-SnapshotsRepository
         env:
           REPOSILITE_USER: ${{ secrets.REPOSILITE_USER }}
           REPOSILITE_TOKEN: ${{ secrets.REPOSILITE_TOKEN }}
