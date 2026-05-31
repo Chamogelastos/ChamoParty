@@ -19,8 +19,7 @@ public class CommandVote extends VCommand {
 	@Override
 	protected CommandType perform(ZVotePartyPlugin plugin) {
 
-		//this.manager.openVote(this.player);
-		VotePartyManager.openVote(player);
+		this.manager.openVote(this.player);
 		
 		return CommandType.SUCCESS;
 	}
