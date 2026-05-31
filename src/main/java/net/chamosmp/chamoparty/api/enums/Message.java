@@ -11,7 +11,7 @@ import net.chamosmp.chamoparty.zcore.utils.nms.NMSUtils;
 
 public enum Message {
 
-	PREFIX("<aqua>ChamoParty </aqua>|"),
+	PREFIX("<aqua>ChamoParty</aqua>| "),
 
 	INVENTORY_NULL("<red>Impossible to find the inventory with the id <gold>%id%<red>."),
 	INVENTORY_CLONE_NULL("<red>The inventory clone is null!"),
