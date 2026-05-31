@@ -1,6 +1,5 @@
 name: '<aqua>Vote'
 size: 27
-type: VOTE
 items:
   fill:
     item:
