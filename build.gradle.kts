@@ -68,8 +68,8 @@ repositories {
 dependencies {
     compileOnly("io.papermc.paper:paper-api:26.1.2.build.+")
     compileOnly("redis.clients:jedis:5.1.3")
-    implementation("com.github.NuVotifier.NuVotifier:nuvotifier-api:2.7.2")
-    implementation("com.github.NuVotifier.NuVotifier:nuvotifier-bukkit:2.7.2")
+    compileOnly("com.github.NuVotifier.NuVotifier:nuvotifier-api:2.7.2")
+    compileOnly("com.github.NuVotifier.NuVotifier:nuvotifier-bukkit:2.7.2")
     implementation("com.mojang:authlib:4.0.43")
     compileOnly("fr.maxlego08.menu:zmenu-api:1.1.1.4")
     compileOnly("me.clip:placeholderapi:2.11.6")
