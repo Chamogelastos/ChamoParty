@@ -132,7 +132,8 @@ public class ZVotePartyPlugin extends ZPlugin {
 		VersionChecker checker = new VersionChecker(this, 124);
 		checker.useLastVersion();
 
-		new Metrics(this, 12543);
+        int pluginId = 31621;
+		Metrics metrics = new Metrics(this, pluginId);
 
 		this.postEnable();
 	}
