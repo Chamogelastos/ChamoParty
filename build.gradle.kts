@@ -86,8 +86,6 @@ tasks.shadowJar {
 
     dependencies {
     }
-
-    //relocate("org.bstats", project.group.toString())
     relocate("com.tcoded.folialib", "net.chamosmp.zvoteparty.libs.folialib")
     relocate("org.bstats", project.group.toString())
 }

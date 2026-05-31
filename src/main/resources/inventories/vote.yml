@@ -23,14 +23,15 @@ items:
     actions:
       - type: message
         messages:
-          - '&fHey &b%player% &fclick here to vote'
-          - '&7(replace_your_vote_link_here)'
+          - '<white>Hey <aqua>%player% <white>click here to vote'
+          - '<gray>(replace_your_vote_link_here)'
         mini-message: true
   player-head:
     slot: 15
     item:
       material: PLAYER_HEAD
-      name: '<green>%player_name%'
+      player-head: "%player%"
+      name: '<green>%player%'
       lore:
         - '<white><b>| <gray>You have <white>%zvoteparty_player_votes%<gray> votes'
         - ''

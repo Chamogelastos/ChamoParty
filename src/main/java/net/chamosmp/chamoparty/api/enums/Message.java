@@ -11,7 +11,7 @@ import net.chamosmp.chamoparty.zcore.utils.nms.NMSUtils;
 
 public enum Message {
 
-	PREFIX("<dark_gray>(<gold>zVoteParty<dark_gray>) "),
+	PREFIX("<aqua>ChamoParty </aqua>|"),
 
 	INVENTORY_NULL("<red>Impossible to find the inventory with the id <gold>%id%<red>."),
 	INVENTORY_CLONE_NULL("<red>The inventory clone is null!"),
@@ -19,11 +19,11 @@ public enum Message {
 	INVENTORY_BUTTON_PREVIOUS("<white>§ <gray>Previous page"),
 	INVENTORY_BUTTON_NEXT("<white>§ <gray>Next page"),
 
-	TIME_DAY("%02d jour(s) %02d heure(s) %02d minute(s) %02d seconde(s)"),
-	TIME_HOUR("%02d heure(s) %02d minute(s) %02d seconde(s)"),
+	TIME_DAY("%02d days(s) %02d hour(s) %02d minute(s) %02d second(s)"),
+	TIME_HOUR("%02d hours(s) %02d minute(s) %02d second(s)"),
 	TIME_HOUR_SIMPLE("%02d:%02d:%02d"),
-	TIME_MINUTE("%02d minute(s) %02d seconde(s)"),
-	TIME_SECOND("%02d seconde(s)"),
+	TIME_MINUTE("%02d minute(s) %02d second(s)"),
+	TIME_SECOND("%02d second(s)"),
 
 	COMMAND_SYNTAX_ERROR("<red>You must execute the command like this<gray>: <green>%syntax%"),
 	COMMAND_NO_PERMISSION("<red>You do not have permission to run this command."),
@@ -46,7 +46,7 @@ public enum Message {
 	VOTE_INFORMATIONS(MessageType.CENTER,
 			"<dark_gray><st>-+------------------------------+-",
 			"",
-			"<gray>Vote for the server <dark_purple>Serveur name here<gray> !",
+			"<gray>Vote for the server <dark_purple>Server Name<gray> !",
 			"",
 			"<dark_gray><st>-+------------------------------+-"),
 
@@ -59,7 +59,7 @@ public enum Message {
 	VOTE_REMOVE_ERROR("<red>Impossible to remove a vote from the <white>%player%<red>, the player has no vote."),
 	VOTE_NEEDED(
 			"<aqua>%zvoteparty_votes_required_party% <white>votes <gray>needed for the next party !",
-			"<gray>Serveur Minecraft Vote<dark_gray>: <white>https://serveur-minecraft-vote.fr/"
+			"<gray>Vote<dark_gray>: <white>(Your Vote Link)"
 	),
 
 	VOTE_PARTY_START(MessageType.CENTER,
