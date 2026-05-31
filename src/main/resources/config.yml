@@ -9,9 +9,6 @@
 #    | \__/\ | | | (_| | | | | | | (_) | | | (_| | |  | |_| |_| |
 #    \____/_| |_|\__,_|_| |_| |_|\___/\_|  \__,_|_|   \__|\__, |
 #                                                          __/ |
-#                                                         |___/
-#
-#
 #   Commands and permissions:
 #   - /vote » Open vote inventory - zvoteparty.vote
 #   - /zvoteparty » Show needed votes for vote party (aliases: /vp, /voteparty) - zvoteparty.use
