@@ -96,4 +96,4 @@ sql:
   password: "secret"
   port: 3306
   host: "192.168.10.10"
-  database: "zvoteparty
+  database: "zvoteparty"
