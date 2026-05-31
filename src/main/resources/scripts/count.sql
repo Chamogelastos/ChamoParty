@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS zvoteparty_count
+CREATE TABLE IF NOT EXISTS chamoparty_count
 (
     vote long not null
 )

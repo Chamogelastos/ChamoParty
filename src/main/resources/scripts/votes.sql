@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS zvoteparty_votes
+CREATE TABLE IF NOT EXISTS chamoparty_votes
 (
     player_uuid             varchar(36)          not null,
     service_name   varchar(255)         not null,
