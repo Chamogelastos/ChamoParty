@@ -12,6 +12,7 @@ Here is the checklist:
 - [x] Modern Version support (Kind of?)
 - [ ] Good Api
 - [ ] Production Ready
+- [ ] Successfully rename everything to ChamoParty (or chamoparty)
 
 # Building
 Build with PowerShell or a Linux Console
