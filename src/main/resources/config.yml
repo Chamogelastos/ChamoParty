@@ -1,12 +1,7 @@
 #########################################################################################################################################
-#
-#
-#   Sponsor: https://serveur-minecraft-vote.fr/
-#   Sponsor 2 : https://minecraft-inventory-builder.com/
-#   5€ gift code on Minecraft Vote Server : ZVOTEPARTY (https://serveur-minecraft-vote.fr/utiliser/un/code/cadeau?code=ZVOTEPARTY)
 #   
-#   Documentation: https://groupez.dev/resources/zvoteparty.124/wiki
-#   Discord: https://discord.groupez.dev/
+#   Documentation: https://github.com/SQD-Studios/ChamoParty/wiki
+#   Source: https://github.com/SQD-Studios/ChamoParty
 # 
 # 
 # ███████╗██╗░░░██╗░█████╗░████████╗███████╗██████╗░░█████╗░██████╗░████████╗██╗░░░██╗
@@ -18,7 +13,7 @@
 #
 #
 #   Commands and permissions:
-#   - /vote » Open vote invenroy - zvoteparty.vote
+#   - /vote » Open vote inventory - zvoteparty.vote
 #   - /zvoteparty » Show needed votes for vote party (aliases: /vp, /voteparty) - zvoteparty.use
 #   - /zvoteparty reload » Reload configuration - zvoteparty.reload
 #   - /zvoteparty config » Open ingame configuration - zvoteparty.config
@@ -45,46 +40,46 @@ rewards:
     commands:
       - "eco give %player% 100"
     broadcast:
-      - "&f%player% &7just won &a$100"
+      - "<white>%player% <gray>just won <green>$100"
   2:
     percent: 30
     needToBeOnline: true # Player must be online to receive the reward
     commands:
       - "give %player% minecraft:stone 10"
     broadcast:
-      - "&f%player% &7just won &ax10 stone"      
+      - "<white>%player% <gray>just won <green>x10 stone"
   3:
     percent: 30
     needToBeOnline: false # Player must not be online to receive the reward
     commands:
       - "eco give %player% 500"
-    broadcast: []   
+    broadcast: []
   4:
     percent: 30
     needToBeOnline: true # Player must be online to receive the reward
     commands:
       - "cr give %player% diamand"
     broadcast:
-      - "&7&m----------"
-      - "&f%player% &7just won &ax1 diamand"
-      - "&7&m----------"      
-      
+      - "<gray><st>----------"
+      - "<white>%player% <gray>just won <green>x1 diamand"
+      - "<gray><st>----------"
+
 party:
   # The amount of votes needed
   votes_needed: 50
-  
+
   # The command that will be executed when the number of votes is reached for each online players
   global_commands:
     - "eco give %player% 100"
-    
+
   # This command will be executed in the console, you cannot specify a player here
   commands:
-    - "eco give * 0.0000000009"  
+    - "eco give * 0.0000000009"
   # Sound to be played after Vote Party is triggered.
   # Sound: <SOUND>:<VOLUME>:<PITCH> - Name of the sound to play. A list of available sounds is found here: https://docs.andre601.ch/Spigot-Sounds/sounds/1.21.x/1.21.4/
   Sound: UI_TOAST_CHALLENGE_COMPLETE:1:2
-    
-  # Rewards that the player can get randomly 
+
+  # Rewards that the player can get randomly
   rewards:
     1:
       percent: 50
@@ -93,12 +88,12 @@ party:
     2:
       percent: 50
       commands:
-        - "cr give %player% test"  
-        
+        - "cr give %player% test"
+
 #Database informations
 sql:
   user: "homestead"
   password: "secret"
   port: 3306
   host: "192.168.10.10"
-  database: "zvoteparty"         
+  database: "zvoteparty

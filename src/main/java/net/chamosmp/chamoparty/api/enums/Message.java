@@ -11,73 +11,73 @@ import net.chamosmp.chamoparty.zcore.utils.nms.NMSUtils;
 
 public enum Message {
 
-	PREFIX("§8(§6zVoteParty§8) "),
-	
-	INVENTORY_NULL("§cImpossible to find the inventory with the id §6%id%§c."),
-	INVENTORY_CLONE_NULL("§cThe inventory clone is null!"),
-	INVENTORY_OPEN_ERROR("§cAn error occurred with the opening of the inventory §6%id%§c."),
-	INVENTORY_BUTTON_PREVIOUS("§f§ §7Previous page"),
-	INVENTORY_BUTTON_NEXT("§f§ §7Next page"),
-	
+	PREFIX("<dark_gray>(<gold>zVoteParty<dark_gray>) "),
+
+	INVENTORY_NULL("<red>Impossible to find the inventory with the id <gold>%id%<red>."),
+	INVENTORY_CLONE_NULL("<red>The inventory clone is null!"),
+	INVENTORY_OPEN_ERROR("<red>An error occurred with the opening of the inventory <gold>%id%<red>."),
+	INVENTORY_BUTTON_PREVIOUS("<white>§ <gray>Previous page"),
+	INVENTORY_BUTTON_NEXT("<white>§ <gray>Next page"),
+
 	TIME_DAY("%02d jour(s) %02d heure(s) %02d minute(s) %02d seconde(s)"),
 	TIME_HOUR("%02d heure(s) %02d minute(s) %02d seconde(s)"),
 	TIME_HOUR_SIMPLE("%02d:%02d:%02d"),
 	TIME_MINUTE("%02d minute(s) %02d seconde(s)"),
 	TIME_SECOND("%02d seconde(s)"),
-	
-	COMMAND_SYNTAX_ERROR("§cYou must execute the command like this§7: §a%syntax%"),
-	COMMAND_NO_PERMISSION("§cYou do not have permission to run this command."),
-	COMMAND_NO_CONSOLE("§cOnly one player can execute this command."),
-	COMMAND_NO_ARG("§cImpossible to find the command with its arguments."),
-	COMMAND_SYNTAX_HELP("§a%syntax% §b§ §7%description%"),
-	
+
+	COMMAND_SYNTAX_ERROR("<red>You must execute the command like this<gray>: <green>%syntax%"),
+	COMMAND_NO_PERMISSION("<red>You do not have permission to run this command."),
+	COMMAND_NO_CONSOLE("<red>Only one player can execute this command."),
+	COMMAND_NO_ARG("<red>Impossible to find the command with its arguments."),
+	COMMAND_SYNTAX_HELP("<green>%syntax% <aqua>§ <gray>%description%"),
+
 	DESCRIPTION_VERSION("Show plugin version"),
 	DESCRIPTION_RELOAD("Reload configurations"),
 	DESCRIPTION_CONFIG("Change configuration"),
 	DESCRIPTION_ADD("Add a vote to a player."),
 	DESCRIPTION_REMOVE("Remove a vote to a player."),
 	DESCRIPTION_STARTPARTY("Force launch a Vote Party"),
-	DESCRIPTION_HELP("Show commands"), 
-	DESCRIPTION_VOTE("Allows you to open the voting inventory"), 
-	
-	RELOAD_SUCCESS("§aYou have just reloaded the configuration."), 
-	RELOAD_ERROR("§cAn error has occurred, go to the console."), 
-	
+	DESCRIPTION_HELP("Show commands"),
+	DESCRIPTION_VOTE("Allows you to open the voting inventory"),
+
+	RELOAD_SUCCESS("<green>You have just reloaded the configuration."),
+	RELOAD_ERROR("<red>An error has occurred, go to the console."),
+
 	VOTE_INFORMATIONS(MessageType.CENTER,
-			"§8§m-+------------------------------+-",
-			"", 
-			"§7Vote for the server §5Serveur name here§7 !",
-			"", 
-			"§8§m-+------------------------------+-"),
-	
-	VOTE_BROADCAST_ACTION(MessageType.ACTION, "§f%player% §7has just voted §8(§b%zvoteparty_votes_recorded%§7/§a%zvoteparty_votes_required_total%§8)"),
-	VOTE_BROADCAST_TCHAT("§f%player% §7has just voted §8(§b%zvoteparty_votes_recorded%§7/§a%zvoteparty_votes_required_total%§8)"),
-	VOTE_MESSAGE("§7You have just voted for the server §5Serveur name§7."),
-	VOTE_LATER("§7You have just received §b%amount% §7votes."),
-	VOTE_SEND("§7You just gave a vote to §f%player%§7"),
-	VOTE_REMOVE_SUCCESS("§aYou have just removed a yours from the §f%player%§a."),
-	VOTE_REMOVE_ERROR("§cImpossible to remove a vote from the §f%player%§c, the player has no vote."),
+			"<dark_gray><st>-+------------------------------+-",
+			"",
+			"<gray>Vote for the server <dark_purple>Serveur name here<gray> !",
+			"",
+			"<dark_gray><st>-+------------------------------+-"),
+
+	VOTE_BROADCAST_ACTION(MessageType.ACTION, "<white>%player% <gray>has just voted <dark_gray>(<aqua>%zvoteparty_votes_recorded%<gray>/<green>%zvoteparty_votes_required_total%<dark_gray>)"),
+	VOTE_BROADCAST_TCHAT("<white>%player% <gray>has just voted <dark_gray>(<aqua>%zvoteparty_votes_recorded%<gray>/<green>%zvoteparty_votes_required_total%<dark_gray>)"),
+	VOTE_MESSAGE("<gray>You have just voted for the server <dark_purple>Serveur name<gray>."),
+	VOTE_LATER("<gray>You have just received <aqua>%amount% <gray>votes."),
+	VOTE_SEND("<gray>You just gave a vote to <white>%player%<gray>"),
+	VOTE_REMOVE_SUCCESS("<green>You have just removed a yours from the <white>%player%<green>."),
+	VOTE_REMOVE_ERROR("<red>Impossible to remove a vote from the <white>%player%<red>, the player has no vote."),
 	VOTE_NEEDED(
-			"§b%zvoteparty_votes_required_party% §fvotes §7needed for the next party !",
-			"§7Serveur Minecraft Vote§8: §fhttps://serveur-minecraft-vote.fr/"
-			),
-	
-    VOTE_PARTY_START(MessageType.CENTER,
-            "§8§m-+------------------------------+-",
-            "",
-            "§7Launch of the voting party!",
-            "",
-            "§8§m-+------------------------------+-"
-    ),
-    NOT_ELIGIBLE_PARTY(MessageType.CENTER,
-            "§8§m-+------------------------------+-",
-            "",
-            "§cYou didn’t vote, so you aren’t eligible for the Vote Party rewards!",
-            "",
-            "§8§m-+------------------------------+-"
-    ),
-    VOTE_STARTPARTY("§aYou just launched the voting party.");
-	
+			"<aqua>%zvoteparty_votes_required_party% <white>votes <gray>needed for the next party !",
+			"<gray>Serveur Minecraft Vote<dark_gray>: <white>https://serveur-minecraft-vote.fr/"
+	),
+
+	VOTE_PARTY_START(MessageType.CENTER,
+			"<dark_gray><st>-+------------------------------+-",
+			"",
+			"<gray>Launch of the voting party!",
+			"",
+			"<dark_gray><st>-+------------------------------+-"
+	),
+	NOT_ELIGIBLE_PARTY(MessageType.CENTER,
+			"<dark_gray><st>-+------------------------------+-",
+			"",
+			"<red>You didn’t vote, so you aren’t eligible for the Vote Party rewards!",
+			"",
+			"<dark_gray><st>-+------------------------------+-"
+	),
+	VOTE_STARTPARTY("<green>You just launched the voting party.");
+
 	;
 
 	private List<String> messages;
@@ -87,9 +87,9 @@ public enum Message {
 	private MessageType type = MessageType.TCHAT;
 
 	private ItemStack itemStack;
-	
+
 	/**
-	 * 
+	 *
 	 * @param message
 	 */
 	private Message(String message) {
@@ -98,7 +98,7 @@ public enum Message {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param title
 	 * @param subTitle
 	 * @param a
@@ -117,16 +117,16 @@ public enum Message {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param message
 	 */
 	private Message(String... message) {
 		this.messages = Arrays.asList(message);
 		this.use = true;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param message
 	 */
 	private Message(MessageType type, String... message) {
@@ -134,9 +134,9 @@ public enum Message {
 		this.use = true;
 		this.type = type;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 * @param message
 	 */
 	private Message(MessageType type, String message) {
@@ -146,7 +146,7 @@ public enum Message {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param message
 	 * @param use
 	 */
@@ -230,7 +230,7 @@ public enum Message {
 	public MessageType getType() {
 		return type.equals(MessageType.ACTION) && NMSUtils.isVeryOldVersion() ? MessageType.TCHAT : type;
 	}
-	
+
 	public ItemStack getItemStack() {
 		return itemStack;
 	}
@@ -238,7 +238,7 @@ public enum Message {
 	public void setType(MessageType type) {
 		this.type = type;
 	}
-	
+
 	public void setItemStack(ItemStack itemStack) {
 		this.itemStack = itemStack;
 	}
