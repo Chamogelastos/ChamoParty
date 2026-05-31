@@ -44,10 +44,12 @@ repositories {
         name = "papermc"
         url = uri("https://repo.papermc.io/repository/maven-public/")
     }
-    maven {
+    /*maven {
         name = "chamosmpRepoReleases"
         url = uri("https://maven.chamosmp.net/releases")
     }
+
+     */
 }
 
 /*dependencies {
