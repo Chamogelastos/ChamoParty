@@ -1,6 +1,7 @@
 package net.chamosmp.chamoparty.command.commands;
 
 import net.chamosmp.chamoparty.ZVotePartyPlugin;
+import net.chamosmp.chamoparty.api.VotePartyManager;
 import net.chamosmp.chamoparty.api.enums.Message;
 import net.chamosmp.chamoparty.api.enums.Permission;
 import net.chamosmp.chamoparty.command.VCommand;
@@ -18,7 +19,8 @@ public class CommandVote extends VCommand {
 	@Override
 	protected CommandType perform(ZVotePartyPlugin plugin) {
 
-		this.manager.openVote(this.player);
+		//this.manager.openVote(this.player);
+		VotePartyManager.openVote(player);
 		
 		return CommandType.SUCCESS;
 	}

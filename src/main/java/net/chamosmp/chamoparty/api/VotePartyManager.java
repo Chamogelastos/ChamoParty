@@ -30,7 +30,7 @@ public interface VotePartyManager extends Saveable {
 	 * 
 	 * @param player
 	 */
-	void openVote(Player player);
+    static void openVote(Player player);
 
 	/**
 	 * Allows you to perform the voting action on a user
