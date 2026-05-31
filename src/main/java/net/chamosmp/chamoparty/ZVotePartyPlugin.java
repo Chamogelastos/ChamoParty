@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 
 import com.tcoded.folialib.FoliaLib;
 import com.tcoded.folialib.impl.PlatformScheduler;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.plugin.ServicePriority;
@@ -32,7 +33,6 @@ import net.chamosmp.chamoparty.save.MessageLoader;
 import net.chamosmp.chamoparty.storage.ZStorageManager;
 import net.chamosmp.chamoparty.zcore.ZPlugin;
 import net.chamosmp.chamoparty.zcore.enums.EnumInventory;
-import net.chamosmp.chamoparty.zcore.utils.plugins.Metrics;
 import net.chamosmp.chamoparty.zcore.utils.plugins.Plugins;
 import net.chamosmp.chamoparty.zcore.utils.plugins.VersionChecker;
 
@@ -130,7 +130,11 @@ public class ZVotePartyPlugin extends ZPlugin {
 		}
 
 		VersionChecker checker = new VersionChecker(this, 124);
-		checker.useLastVersion();
+        try {
+            checker.modrinthVersionCheck();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         int pluginId = 31621;
 		Metrics metrics = new Metrics(this, pluginId);
@@ -178,7 +182,7 @@ public class ZVotePartyPlugin extends ZPlugin {
 	/**
 	 * Get player vote
 	 * 
-	 * @param offlinePlayer
+	 * @param uuid
 	 * @return {@link PlayerVote}
 	 */
 	public void get(UUID uuid, Consumer<PlayerVote> consumer, boolean forceDatabaseUpdate) {

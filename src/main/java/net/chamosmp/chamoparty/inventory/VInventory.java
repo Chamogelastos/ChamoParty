@@ -3,6 +3,7 @@ package net.chamosmp.chamoparty.inventory;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -65,7 +66,7 @@ public abstract class VInventory extends ZUtils implements Cloneable {
 	 */
 	protected VInventory createInventory(String name, int size) {
 		this.guiName = name;
-		this.inventory = Bukkit.createInventory(null, size, name);
+		this.inventory = Bukkit.createInventory(null, size, Component.text(name));
 		return this;
 	}
 

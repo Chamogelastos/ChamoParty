@@ -1,11 +1,18 @@
 package net.chamosmp.chamoparty.zcore.utils.plugins;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
 import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Consumer;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import net.chamosmp.chamoparty.ZVotePartyPlugin;
 import org.bukkit.Bukkit;
@@ -46,7 +53,9 @@ public class VersionChecker implements Listener {
 
 	/**
 	 * Allows to check if the plugin version is up to date.
+	 * @deprecated Please use {@link VersionChecker#modrinthVersionCheck()}. It is a direct replacement and should work as this was
 	 */
+	@Deprecated(since = "0.0.1", forRemoval = true)
 	public void useLastVersion() {
 
 		Bukkit.getPluginManager().registerEvents(this, this.plugin); // Register
@@ -71,9 +80,9 @@ public class VersionChecker implements Listener {
 	}
 
 	@EventHandler
-	public void onConnect(PlayerJoinEvent event) {
+	public void onConnect(PlayerJoinEvent event) throws IOException, InterruptedException {
 		final Player player = event.getPlayer();
-		if (!useLastVersion && event.getPlayer().hasPermission("zplugin.notifs")) {
+		if (isNewerVersion(plugin.getPluginMeta().getVersion(), remoteVer()) && event.getPlayer().hasPermission("zplugin.notifs")) {
 			ZVotePartyPlugin.getScheduler().runAtEntityLater(player, () -> {
 				String prefix = Message.PREFIX.getMessage();
 				player.sendMessage(prefix
@@ -89,12 +98,15 @@ public class VersionChecker implements Listener {
 	 * 
 	 * @param consumer
 	 *            - Do something after
+	 * @deprecated This uses the groupez resource to check for the update.
 	 */
+	@Deprecated(since = "0.0.1", forRemoval = true)
 	public void getVersion(Consumer<String> consumer) {
 		ZVotePartyPlugin.getScheduler().runAsync(task -> {
 			final String apiURL = String.format(URL_API, this.pluginID);
 			try {
-				URL url = new URL(apiURL);
+				URI uri = new URI(apiURL);
+				URL url = uri.toURL();
 				URLConnection hc = url.openConnection();
 				hc.setRequestProperty("User-Agent",
 						"Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10.4; en-US; rv:1.9.2.2) Gecko/20100316 Firefox/3.6.2");
@@ -105,8 +117,77 @@ public class VersionChecker implements Listener {
 
 			} catch (IOException exception) {
 				this.plugin.getLogger().info("Cannot look for updates: " + exception.getMessage());
+			} catch (URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+        });
+	}
+
+	public void modrinthVersionCheck() throws Exception {
+		String pluginVer = plugin.getPluginMeta().getVersion();
+		String version = remoteVer();
+
+		if (!version.equals("failed")) {
+		if (isNewerVersion(pluginVer, version)) {
+			Logger.info("New update available. Your version: " + pluginVer + ", latest version: " + version);
+			Logger.info("Download plugin here: " + String.format(URL_RESOURCE, this.pluginID));
+		} else {
+			Logger.info("No update available.");
+		}
+		}
+	}
+	public String remoteVer() throws IOException, InterruptedException {
+		String pluginVer = plugin.getPluginMeta().getVersion();
+		String baseUrl = "https://api.modrinth.com/v2";
+
+		HttpClient client = HttpClient.newHttpClient();
+		HttpRequest request = HttpRequest.newBuilder()
+				.uri(URI.create(baseUrl + "/project/V5rKW5Zq/version"))
+				.build();
+
+		HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+		String responseBody = response.body();
+
+		// Parse version_number from JSON using regex — no ObjectMapper needed
+		Pattern pattern = Pattern.compile("\"version_number\"\\s*:\\s*\"([^\"]+)\"");
+		Matcher matcher = pattern.matcher(responseBody);
+
+		if (!matcher.find()) {
+			Logger.info("Cannot look for updates: ");
+			return "failed";
+		}
+
+        return matcher.group(1);
+
+	}
+	public static boolean isNewerVersion(String current, String latest) {
+		String[] currentParts = current.split("\\.");
+		String[] latestParts = latest.split("\\.");
+
+		int maxLength = Math.max(currentParts.length, latestParts.length);
+
+		for (int i = 0; i < maxLength; i++) {
+
+			int currentValue =
+					i < currentParts.length
+							? Integer.parseInt(currentParts[i])
+							: 0;
+
+			int latestValue =
+					i < latestParts.length
+							? Integer.parseInt(latestParts[i])
+							: 0;
+
+			if (latestValue > currentValue) {
+				return true;
 			}
-		});
+
+			if (latestValue < currentValue) {
+				return false;
+			}
+		}
+
+		return false;
 	}
 
 }

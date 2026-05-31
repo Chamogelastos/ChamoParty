@@ -45,7 +45,7 @@ import java.util.logging.Level;
 
 public abstract class ZPlugin extends JavaPlugin {
 
-    private final Logger log = new Logger(this.getPluginMeta().getName() + " v" + getPluginMeta().getVersion());
+    private final Logger log = new Logger("<aqua>" + this.getPluginMeta().getName());
     private final List<Saveable> savers = new ArrayList<>();
     private final List<ListenerAdapter> listenerAdapters = new ArrayList<>();
     private final List<String> files = new ArrayList<>();

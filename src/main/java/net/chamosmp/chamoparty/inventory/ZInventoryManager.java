@@ -115,7 +115,7 @@ public class ZInventoryManager extends ListenerAdapter {
 				return;
 			}
 			if (event.getView() != null && gui.getPlayer().equals(player)
-					&& event.getView().getTitle().equals(gui.getGuiName())) {
+					&& event.getView().getOriginalTitle().equals(gui.getGuiName())) {
 				event.setCancelled(true);
 				ItemButton button = gui.getItems().getOrDefault(event.getSlot(), null);
 				if (button != null)
